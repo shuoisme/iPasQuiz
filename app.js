@@ -6,6 +6,7 @@ const btnResetWrong = document.getElementById("btnResetWrong");
 
 const BANKS = window.BANKS || {};
 const bankIds = Object.keys(BANKS);
+const countSelect = document.getElementById("countSelect");
 
 let currentBankId = bankIds[0] || null;
 let onlyWrong = false;
@@ -38,11 +39,30 @@ function rebuildQueue() {
   if (!bank) return;
 
   const qs = bank.questions || [];
-  if (!onlyWrong) {
-    queue = qs.map((_, i) => i);
+  const wrong = getWrongSet(currentBankId);
+
+  // 1️⃣ 先決定題目來源
+  let pool = [];
+
+  if (onlyWrong) {
+    pool = qs.map((_, i) => i).filter(i => wrong.has(i));
   } else {
-    const wrong = getWrongSet(currentBankId);
-    queue = qs.map((_, i) => i).filter(i => wrong.has(i));
+    pool = qs.map((_, i) => i);
+  }
+
+  // 2️⃣ 洗牌（亂數）
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+
+  // 3️⃣ 依使用者選擇題數
+  const selected = countSelect.value;
+
+  if (selected !== "all") {
+    queue = pool.slice(0, Number(selected));
+  } else {
+    queue = pool;
   }
 
   idx = 0;
@@ -163,3 +183,6 @@ btnResetWrong.onclick = () => {
 
 buildSelect();
 rebuildQueue();
+countSelect.onchange = () => {
+  rebuildQueue();
+};
