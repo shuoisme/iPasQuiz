@@ -6,52 +6,73 @@
   <title>線上刷題</title>
   <style>
     body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans TC",sans-serif;margin:0;background:#0b0f19;color:#e8eefc}
-    .wrap{max-width:900px;margin:0 auto;padding:16px}
+    .wrap{max-width:980px;margin:0 auto;padding:16px}
     .card{background:#121a2a;border:1px solid #22304d;border-radius:14px;padding:14px;margin-top:12px}
     select,button{font-size:16px;border-radius:10px;border:1px solid #2b3b5e;background:#0f1524;color:#e8eefc;padding:10px}
     button{cursor:pointer}
+    button:disabled{opacity:.55;cursor:not-allowed}
     .row{display:flex;gap:10px;flex-wrap:wrap}
-    .opt{display:block;width:100%;text-align:left;margin-top:8px}
+    .opt{display:block;width:100%;text-align:left;margin-top:8px;line-height:1.4}
     .muted{opacity:.8;font-size:14px}
     .pill{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid #2b3b5e}
+    .split{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    .qtitle{font-size:18px;font-weight:800;margin-top:8px}
+    .navbtn{min-width:92px}
+    .warn{border:1px solid #7a2b2b;background:#1c0f13}
+    .ok{border:1px solid #2b7a3a;background:#0f1c14}
+    .mini{font-size:13px;opacity:.85}
+    .hr{height:1px;background:#22304d;margin:10px 0}
+    a{color:#9bc2ff}
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="card">
-      <div class="row" style="align-items:center;justify-content:space-between">
+      <div class="split">
         <div>
           <div style="font-size:18px;font-weight:700">線上刷題</div>
-          <div class="muted">可切換 6 份題庫｜錯題會記錄在本機</div>
+          <div class="muted">先作答、最後交卷才對答案｜錯題會記錄在本機</div>
         </div>
         <span id="stat" class="pill">0 / 0</span>
       </div>
 
       <div class="row" style="margin-top:12px">
         <select id="bankSelect"></select>
-        <select id="countSelect">
-        <option value="10">10 題</option>
-        <option value="20">20 題</option>
-        <option value="30">30 題</option>
-        <option value="all">全部</option>
+
+        <select id="countSelect" title="本回合題數">
+          <option value="10">10 題</option>
+          <option value="20">20 題</option>
+          <option value="30">30 題</option>
+          <option value="50">50 題</option>
+          <option value="all">全部</option>
         </select>
 
         <button id="btnWrong">只刷錯題：關</button>
         <button id="btnResetWrong">清空錯題</button>
+        <button id="btnSubmit">交卷 / 對答案</button>
+      </div>
+
+      <div class="mini" style="margin-top:10px">
+        小提醒：同學一起用沒問題（各自手機/電腦的錯題記錄互不影響）。
       </div>
     </div>
 
     <div id="qBox" class="card"></div>
+    <div id="resultBox" class="card" style="display:none"></div>
   </div>
 
-  <!-- 6 份題庫檔 -->
+  <!-- ✅ 題庫檔：你有幾份就放幾行，順序不重要 -->
+  <!-- I11 -->
   <script src="banks/I11_113_1.js"></script>
   <script src="banks/I11_113_2.js"></script>
   <script src="banks/I11_114_1.js"></script>
+
+  <!-- I12（如果你現在還沒放齊，之後補上即可） -->
   <script src="banks/I12_113_1.js"></script>
   <script src="banks/I12_113_2.js"></script>
   <script src="banks/I12_114_1.js"></script>
 
+  <!-- ✅ app.js 一定要最後 -->
   <script src="app.js"></script>
 </body>
 </html>
