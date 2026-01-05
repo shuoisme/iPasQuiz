@@ -1,7 +1,7 @@
 window.BANKS = window.BANKS || {};
 
 window.BANKS["I11_114_1"] = {
-  title: "I11 資訊安全管理概論（疑義釋義版）｜113-2",
+  title: "I11 資訊安全管理概論（疑義釋義版）｜114-1",
   questions: [
   {
     "q": "關於ISO 27001 資訊安全管理系統描述，下列何項正確？",
