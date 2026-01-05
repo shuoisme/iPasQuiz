@@ -1,7 +1,7 @@
 window.BANKS = window.BANKS || {};
 
-window.BANKS["I11_113_1"] = {
-  title: "I11 資訊安全管理概論｜113-1",
+window.BANKS["I12_113_2"] = {
+  title: "I12 資訊安全技術概論｜113-2",
   questions: [
   {
     "q": "有關防止 OWASP Top 10 的 A02:2021-Cryptographic Failures 漏洞之敘述，下列何者錯誤？",

@@ -1,7 +1,7 @@
 window.BANKS = window.BANKS || {};
 
-window.BANKS["I11_113_1"] = {
-    title: "I11 資訊安全管理概論｜113-1",
+window.BANKS["I12_114_1"] = {
+    title: "I12 資訊安全技術概論｜114-1",
     questions: [
         {
             "q": "網路防火牆的訪問控制列表 (Access Control List, ACL) 指的是下列何項？",

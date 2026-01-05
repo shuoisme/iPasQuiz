@@ -1,7 +1,7 @@
 window.BANKS = window.BANKS || {};
 
-window.BANKS["I11_113_1"] = {
-  title: "I11 資訊安全管理概論｜113-1",
+window.BANKS["I12_113_1"] = {
+  title: "I12 資訊安全技術概論｜113-1",
   questions: [
   {
     "q": "有關阻斷服務攻擊 (DoS 攻擊) 之敘述，下列何者正確？",
